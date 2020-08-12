@@ -4,7 +4,7 @@ class Welcome < Application
   base "/"
 
   def index
-    welcome_text = "You're being trampled by Spider-Gazelle!"
+    welcome_text = "ToDo List"
     Log.warn { "logs can be collated using the request ID" }
 
     # You can use signals to change log levels at runtime

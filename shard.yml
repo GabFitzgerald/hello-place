@@ -10,6 +10,10 @@ dependencies:
   clear: 
     github: anykeyh/clear
     branch: master
+  pg:
+    github: will/crystal-pg
+  mysql:
+    github: crystal-lang/crystal-mysql
 
   # Extends ENV to read values injected by docker and kubernetes secrets
   secrets-env:
