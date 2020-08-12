@@ -1,10 +1,15 @@
 require "option_parser"
 require "./constants"
+require "clear"
 
 # Server defaults
 port = App::DEFAULT_PORT
 host = App::DEFAULT_HOST
 process_count = App::DEFAULT_PROCESS_COUNT
+
+# initialize a pool of database connection:
+Clear::SQL.init("postgres://gab[:postgres]@localhost/hello_place", 
+    connection_pool_size: 5)
 
 # Command line options
 OptionParser.parse(ARGV.dup) do |parser|
