@@ -91,5 +91,5 @@ end
 puts "#{App::NAME} leaps through the veldt\n"
 
 # initialize a pool of database connection:
-Clear::SQL.init("postgres://gab@localhost/hello_place", 
-    connection_pool_size: 5)
+Clear::SQL.init("postgres://gab@localhost/hello_place",
+  connection_pool_size: 5)
