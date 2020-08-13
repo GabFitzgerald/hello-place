@@ -79,6 +79,16 @@ class ToDos < Application
 
   # GET /todos/:id/edit
   def edit
+    respond_with do
+      html template("edit.ecr")
+      # text "Welcome, #{welcome_text}"
+      # json({welcome: welcome_text})
+      # xml do
+      #   XML.build(indent: "  ") do |xml|
+      #     xml.element("welcome") { xml.text welcome_text }
+      #   end
+      # end
+    end
   end
 
   # PATCH /todos/:id

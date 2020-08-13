@@ -16,8 +16,10 @@ module App
 
   STATIC_FILE_PATH = ENV["PUBLIC_WWW_PATH"]? || "./www"
 
-  COOKIE_SESSION_KEY    = ENV["COOKIE_SESSION_KEY"]? || "_spider_gazelle_"
+  COOKIE_SESSION_KEY    = ENV["COOKIE_SESSION_KEY"]? || "_hello_place_"
   COOKIE_SESSION_SECRET = ENV["COOKIE_SESSION_SECRET"]? || "4f74c0b358d5bab4000dd3c75465dc2c"
+
+  PG_DATABASE_URL = ENV["PG_DATABASE_URL"]? || "postgres://gab@localhost/hello_place"
 
   def self.running_in_production?
     ENVIRONMENT == "production"

@@ -9,7 +9,8 @@ host = App::DEFAULT_HOST
 process_count = App::DEFAULT_PROCESS_COUNT
 
 # initialize a pool of database connection:
-Clear::SQL.init("postgres://gab@localhost/hello_place",
+database = App::PG_DATABASE_URL
+Clear::SQL.init(database,
   connection_pool_size: 5)
 
 # t = ToDo.new({completed: true, todo: "Make to do list" })
