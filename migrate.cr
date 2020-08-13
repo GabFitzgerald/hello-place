@@ -6,7 +6,7 @@ require "clear"
 Clear::SQL.init("postgres://gab@localhost/postgres",
   connection_pool_size: 5)
 
-# Clear::Migration::Manager.instance.apply_all
+Clear::Migration::Manager.instance.apply_all
 
 class ToDo
     include Clear::Model

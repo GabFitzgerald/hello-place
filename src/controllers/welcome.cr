@@ -35,7 +35,8 @@ class ToDos < Application
     
     # SELECT * FROM todos
     # query = ToDo.query
-    todos = ToDo.query.first 
+    todos = Todo.query.first
+    # puts todos.todo
 
     welcome_text = "To Do List"
     Log.warn { "logs can be collated using the request ID" }

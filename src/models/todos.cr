@@ -1,4 +1,4 @@
-class ToDo
+class Todo
   include Clear::Model
 
   column completed : Bool
@@ -9,7 +9,8 @@ end
 
 
 # seed db?
-t = ToDo.new
-t.completed = true
-t.todo = "connect db"
+t = Todo.new
+t.completed = false
+t.todo = "a thing to do"
+t.save!
 

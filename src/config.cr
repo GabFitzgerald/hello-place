@@ -12,6 +12,14 @@ require "./models/*"
 # Server required after application controllers
 require "action-controller/server"
 
+require "./db/migrations/1_create_table.cr"
+require "clear"
+
+Clear::SQL.init("postgres://gab@localhost/postgres",
+  connection_pool_size: 5)
+
+Clear::Migration::Manager.instance.apply_all
+
 # require "clear"
 # database = App::PG_DATABASE_URL
 # Clear::SQL.init(database,
