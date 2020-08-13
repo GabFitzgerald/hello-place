@@ -12,6 +12,11 @@ require "./models/*"
 # Server required after application controllers
 require "action-controller/server"
 
+# require "clear"
+# database = App::PG_DATABASE_URL
+# Clear::SQL.init(database,
+#   connection_pool_size: 5)
+
 # Configure logging (backend defined in constants.cr)
 if App.running_in_production?
   log_level = Log::Severity::Info

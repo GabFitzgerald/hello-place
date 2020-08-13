@@ -1,6 +1,5 @@
 require "option_parser"
 require "./constants"
-require "clear"
 # require "todos.cr"
 
 # Server defaults
@@ -9,6 +8,7 @@ host = App::DEFAULT_HOST
 process_count = App::DEFAULT_PROCESS_COUNT
 
 # initialize a pool of database connection:
+require "clear"
 database = App::PG_DATABASE_URL
 Clear::SQL.init(database,
   connection_pool_size: 5)
