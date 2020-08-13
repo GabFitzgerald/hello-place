@@ -23,8 +23,6 @@ class Welcome < Application
       end
     end
   end
-
-
 end
 
 class ToDos < Application
@@ -33,7 +31,6 @@ class ToDos < Application
   def index
     # @todos = ToDo.all
     todo = "String from ToDO controller"
-
 
     welcome_text = "To Do List"
     Log.warn { "logs can be collated using the request ID" }
@@ -69,14 +66,13 @@ class ToDos < Application
       end
     end
   end
-  
+
   # POST /todos
   def create
   end
 
   # GET /todos/:id
   def show
-
   end
 
   # GET /todos/:id/edit
@@ -106,5 +102,4 @@ class ToDos < Application
   # DELETE /todos/:id
   def destroy
   end
-
-end 
+end

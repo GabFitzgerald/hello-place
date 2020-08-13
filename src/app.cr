@@ -13,9 +13,12 @@ database = App::PG_DATABASE_URL
 Clear::SQL.init(database,
   connection_pool_size: 5)
 
+# Activate all the migrations. Will call change with up direction for each down migrations
+Clear::Migration::Manager.instance.apply_all
+  
 # t = ToDo.new({completed: true, todo: "Make to do list" })
 # t.save!
-# puts "ToDo has been saved as id=#{t.id}"  
+# puts "ToDo has been saved as id=#{t.id}"
 
 # Command line options
 OptionParser.parse(ARGV.dup) do |parser|
