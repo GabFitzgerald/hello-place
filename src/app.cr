@@ -1,11 +1,20 @@
 require "option_parser"
 require "./constants"
 require "clear"
+# require "todos.cr"
 
 # Server defaults
 port = App::DEFAULT_PORT
 host = App::DEFAULT_HOST
 process_count = App::DEFAULT_PROCESS_COUNT
+
+# initialize a pool of database connection:
+Clear::SQL.init("postgres://gab@localhost/hello_place",
+  connection_pool_size: 5)
+
+# t = ToDo.new({completed: true, todo: "Make to do list" })
+# t.save!
+# puts "ToDo has been saved as id=#{t.id}"  
 
 # Command line options
 OptionParser.parse(ARGV.dup) do |parser|
@@ -89,7 +98,3 @@ end
 
 # Shutdown message
 puts "#{App::NAME} leaps through the veldt\n"
-
-# initialize a pool of database connection:
-Clear::SQL.init("postgres://gab@localhost/hello_place",
-  connection_pool_size: 5)
