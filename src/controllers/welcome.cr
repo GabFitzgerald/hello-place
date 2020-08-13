@@ -30,8 +30,12 @@ class ToDos < Application
 
   def index
     # @todos = ToDo.all
-    todo = "String from ToDO controller"
-    @todos = ToDo.all
+    todo = "String from ToDo controller"
+    # @todos = ToDo.all
+    
+    # SELECT * FROM todos
+    # query = ToDo.query
+    todos = ToDo.query.first 
 
     welcome_text = "To Do List"
     Log.warn { "logs can be collated using the request ID" }

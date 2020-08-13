@@ -1,4 +1,4 @@
-class ToDo < Clear::Model
+class ToDo
   include Clear::Model
 
   column completed : Bool
@@ -7,7 +7,9 @@ class ToDo < Clear::Model
   column id : Int32, primary: true, presence: false
 end
 
+
+# seed db?
 t = ToDo.new
 t.completed = true
-t.to = "connect db"
+t.todo = "connect db"
 
