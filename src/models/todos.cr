@@ -1,4 +1,4 @@
-class ToDo
+class ToDo < Clear::Model
   include Clear::Model
 
   column completed : Bool
@@ -6,3 +6,8 @@ class ToDo
 
   column id : Int32, primary: true, presence: false
 end
+
+t = ToDo.new
+t.completed = true
+t.to = "connect db"
+
