@@ -1,5 +1,7 @@
+require "clear"
+
 class Migration1
-  include Clear::Migration1
+  include Clear::Migration
 
   def change(direction)
     direction.up do
