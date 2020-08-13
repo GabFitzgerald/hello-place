@@ -4,7 +4,7 @@ class Welcome < Application
   base "/"
 
   def index
-    welcome_text = "ToDo List"
+    welcome_text = "Welcome to your todo list"
     Log.warn { "logs can be collated using the request ID" }
 
     # You can use signals to change log levels at runtime
@@ -24,14 +24,16 @@ class Welcome < Application
     end
   end
 
-  
+
 end
 
-class New < Application
-  base "/new"
+class ToDos < Application
+  base "/todos"
 
   def index
-    welcome_text = "New To Do"
+    # @todos = ToDo.all
+
+    welcome_text = "To Do List"
     Log.warn { "logs can be collated using the request ID" }
 
     # You can use signals to change log levels at runtime
@@ -39,6 +41,21 @@ class New < Application
     # `kill -s USR1 %APP_PID`
     Log.debug { "use signals to change log levels at runtime" }
 
+    respond_with do
+      html template("index.ecr")
+      text "Welcome, #{welcome_text}"
+      json({welcome: welcome_text})
+      xml do
+        XML.build(indent: "  ") do |xml|
+          xml.element("welcome") { xml.text welcome_text }
+        end
+      end
+    end
+  end
+
+  # GET /todos/new
+  def new
+    welcome_text = "New To Do"
     respond_with do
       html template("new.ecr")
       text "Welcome, #{welcome_text}"
@@ -50,4 +67,32 @@ class New < Application
       end
     end
   end
+  
+  # POST /todos
+  def create
+  end
+
+  # GET /todos/:id
+  def show
+
+  end
+
+  # GET /todos/:id/edit
+  def edit
+  end
+
+  # PATCH /todos/:id
+  # update a specific todo
+  def update
+  end
+
+  # PUT /todos/:id
+  # replace a specific todo
+  def replace
+  end
+
+  # DELETE /todos/:id
+  def destroy
+  end
+
 end 
