@@ -8,7 +8,7 @@ Clear::SQL.init("postgres://gab@localhost/postgres",
 
 Clear::Migration::Manager.instance.apply_all
 
-class ToDo
+class Todo
     include Clear::Model
   
     column completed : Bool
@@ -18,7 +18,7 @@ class ToDo
 end
   
   # seed db?
-  t = ToDo.new
+  t = Todo.new
   t.completed = true
   t.todo = "connect db"
   t.save!
