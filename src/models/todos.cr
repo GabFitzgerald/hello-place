@@ -1,5 +1,3 @@
-require "clear"
-
 class ToDo
   include Clear::Model
 
