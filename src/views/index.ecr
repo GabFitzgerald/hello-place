@@ -8,66 +8,21 @@
 <body style="text-align: center">
     <h1><%= welcome_text %><h1>
 
+    <% todos = Todo.query.each do |todo| %>
+    
     <table style="width:100%">
         <tr>
-            <th>Done?</th>
-            <th>ToDo</th>
+            <td><%= "#{todo.todo}"%></td>
+            <td id=<%="#{todo.id}"%> >Edit</td>
+            <td id=<%="#{todo.id}"%> >Delete</td>
         </tr>
+    <% end %>
         <tr>
-            <td><input type="checkbox"></td>
-            <td>Make ToDo List</td>
-            <td>Edit</td>
-            <td>Delete</td>
-        </tr>
-        <tr>
-            <td><input type="checkbox"></td>
-            <td>Practice Colouring</td>
-            <td>Edit</td>
-            <td>Delete</td>
-        </tr>
-        <tr>
-            <td><input type="checkbox"></td>
-            <td>Research Graduate Schools</td>
-            <td>Edit</td>
-            <td>Delete</td>
-        </tr>
-        <tr>
-            <td><input type="checkbox"></td>
-            <td>Be spontaneous</td>
-            <td>Edit</td>
-            <td>Delete</td>
-        </tr>
-        <tr>
-            <td><input type="checkbox"></td>
-            <td>Creating lasting childhood memories</td>
-            <td>Edit</td>
-            <td>Delete</td>
-        </tr>
-        <tr>
-            <td><input type="checkbox"></td>
-            <td>Make a will</td>
-            <td>Edit</td>
-            <td>Delete</td>
-        </tr>
-        <tr>
-            <td> </td>
             <td>Add a new item button</td>
-            <td></td>
-            <td></td>
         </tr>
-
     </table>
 
-    <p>Dynamic data below this line</p>
-    <hr />
     
-    <%= todo %>
-    <br />
-
-    <% todos = Todo.query.each do |todo| %>
-      <%= "number #{todo.id}: #{todo.todo}" %>
-      <br>
-    <% end %>
 
 </body>
 </html>
