@@ -25,7 +25,7 @@ class Welcome < Application
   end
 end
 
-class ToDos < Application
+class Todos < Application
   base "/todos"
 
   def index
@@ -35,8 +35,15 @@ class ToDos < Application
     
     # SELECT * FROM todos
     # query = ToDo.query
-    todos = Todo.query.first
+    # todos = Todo.query.each do |todo|
+    #   "number #{todo.id}: #{todo.todo}"
+    # end
     # puts todos.todo
+    
+    # todos = ["first element"]
+    # todos = Todo.query.each do |todo|
+    #   "number #{todo.id}: #{todo.todo}"
+    # end
 
     welcome_text = "To Do List"
     Log.warn { "logs can be collated using the request ID" }

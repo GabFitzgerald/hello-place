@@ -63,7 +63,11 @@
     
     <%= todo %>
     <br />
-    <p><%= todos %></p>
+
+    <% todos = Todo.query.each do |todo| %>
+      <%= "number #{todo.id}: #{todo.todo}" %>
+      <br>
+    <% end %>
 
 </body>
 </html>
