@@ -67,13 +67,8 @@ class Todos < Application
   
     # GET /todos/:id
     def show
-
-    end
-  
-    # GET /todos/:id/edit
-    def edit
- 
-
+      todo = Todo.query.find!{id == route_params["id"]}
+      render json: {todo}
     end
   
     # PATCH /todos/:id
