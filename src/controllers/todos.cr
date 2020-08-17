@@ -1,3 +1,6 @@
+require "action-controller"
+require "xml"
+
 class Todos < Application
     base "/todos"
   
@@ -97,18 +100,29 @@ class Todos < Application
   
     # DELETE /todos/:id
     def destroy
+      # query = Todo.query
+      # query.select("id")
+      # query.destroy
+      # Clear::SQL.delete(Todo.id).from("todos").execute
+      # todo = current_todo
+      # getter(todo, &find_todo)
       # todo = current_todo
       # todo.destroy
+      puts "destroy method ran!!!!"
     end
   
     # ============================================
     #              Helper Methods
     # ============================================
   
-    # def current_todo : Todo
-    #   @todo || find_todo
-    # end
+    
+    
+    
   
+    def find_todo
+      Todo.find!(id)
+    end
+    
     # def find_todo : String
     #   id = route_params["id"]
     #   @todo = Todo.find!(id)
@@ -116,8 +130,9 @@ class Todos < Application
   
     # lazy getter
     # default nilable until its returned
-    getter(todo) { Todo.find!(id) }
-  
+    # getter(todo) { Todo.find!(id) }
+    
+
   
   end
   
