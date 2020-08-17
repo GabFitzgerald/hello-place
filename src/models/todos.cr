@@ -9,8 +9,8 @@ end
 
 
 # seed db?
-t = Todo.new
-t.completed = false
-t.todo = "a thing to do"
-t.save!
+# t = Todo.new
+# t.completed = false
+# t.todo = "a thing to do"
+# t.save!
 

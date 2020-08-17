@@ -12,17 +12,19 @@
     
     <table style="width:100%">
         <tr>
-            <td><%= "#{todo.todo}"%></td>
-            <td id=<%="#{todo.id}"%> >Edit</td>
-            <td id=<%="#{todo.id}"%> >Delete</td>
+            <td>
+                <%= "#{todo.todo}"%>
+                <button id=<%="#{todo.id}"%> >Edit</button>
+                <button id=<%="#{todo.id}"%> >Delete (Fake)</button>
+                
+                <button onclick="destroy()" >Delete</button>
+            </td>
         </tr>
     <% end %>
         <tr>
-            <td>Add a new item button</td>
+            <td><button>Add a new item button</button></td>
         </tr>
     </table>
-
-    
 
 </body>
 </html>
