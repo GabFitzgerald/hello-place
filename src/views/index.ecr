@@ -17,7 +17,7 @@
                 <button id=<%="#{todo.id}"%> >Edit</button>
                 <button id=<%="#{todo.id}"%> >Delete (Fake)</button>
                 
-                <button action="DELETE" method="destroy" path="/todos/<%="#{todo.id}"%>" >Delete</button>
+                <button method="DELETE" path="/todos/<%="#{todo.id}"%>" >Delete</button>
             </td>
         </tr>
     <% end %>

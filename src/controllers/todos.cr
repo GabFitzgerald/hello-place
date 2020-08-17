@@ -94,7 +94,9 @@ class Todos < Application
     def destroy
       todo_id = route_params["id"]
       current_todo = Todo.query.find!{ id == todo_id }
-      # current_todo.destroy
+      current_todo.delete
+
+      # redirect_to Todos.index
       #puts current_todo
 
       # puts current_todo
