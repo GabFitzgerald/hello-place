@@ -3,6 +3,47 @@ require "xml"
 
 class Todos < Application
     base "/todos"
+    
+    # def todo_url(id)
+    #   "#{TODOS_URI}/#{id}"
+    # end
+    
+    # def repr(todo, base_url)
+    #   {uid:       todo._id,
+    #     title:     todo.title,
+    #     order:     todo.order,
+    #     completed: todo.completed,
+    #     url:       base_url + todo_url(todo._id),
+    #   }
+    # end
+    
+    # before_all "/todos" do |env|
+    #   # Support CORS and set responses to JSON as default.
+    #   headers env, {
+    #     "Access-Control-Allow-Origin"  => "*",
+    #     "Content-Type"                 => "application/json",
+    #     "Access-Control-Allow-Headers" => "Content-Type",
+    #   }
+    # end
+
+    # before_action :setup_cors
+
+    # def setup_cors
+    #     "Access-Control-Allow-Origin"  => "*",
+    #     "Content-Type"                 => "application/json",
+    #     "Access-Control-Allow-Headers" => "Content-Type"
+    # end
+    
+    # before_all "/todos/:id" do |env|
+    #   # Support CORS and set responses to JSON as default.
+    #   headers env, {
+    #     "Access-Control-Allow-Origin"  => "*",
+    #     "Content-Type"                 => "application/json",
+    #     "Access-Control-Allow-Headers" => "Content-Type",
+    #   }
+    # end
+
+    ###########################################################
 
     getter todo : Todo?
   
@@ -22,11 +63,7 @@ class Todos < Application
   
     # POST /todos
     def create
-      t = Todo.new
-      t.todo = "hard coded todo"
-      t.completed = false
-      t.save!
-
+      Todo.new(JSON.parse(request.body.as(IO))).save!
     end
   
     # GET /todos/:id
@@ -36,7 +73,7 @@ class Todos < Application
     # GET /todos/:id/edit
     def edit
  
-      
+
     end
   
     # PATCH /todos/:id
@@ -51,30 +88,7 @@ class Todos < Application
   
     # DELETE /todos/:id
     def destroy
-      todo_id = route_params["id"]
-      current_todo = Todo.query.find!{ id == todo_id }
-      current_todo.delete
-
-      # redirect_to Todos.index
-      #puts current_todo
-
-      # puts current_todo
-      # current_todo.destroy
-      # head :accepted
-      
-      # puts todo_id
-      # todos = Todo.query
-      # todo = todos.find!(todo_id.to_i32)
-      
-      # todo.destroy
-      # query.select("id").destroy
-
-      # Clear::SQL.delete(Todo.id).from("todos").execute
-      # todo = current_todo
-      # getter(todo, &find_todo)
-      # todo = current_todo
-      # todo.destroy
-      # puts "destroy method ran!!!!"
+      Todo.query.find!{id == route_params["id"]}.delete
     end
   
     # ============================================
@@ -83,26 +97,12 @@ class Todos < Application
   
     
     def find_todo
-      Todo.find!(id)
+      Todo.query.find!({id: params["id"]})
     end
-    
-    def current_todo
-      
-    #   todo_id = route_params["id"]
-    #   current_todo = Todo.query.where(id: todo_id)
-    #   current_todo
-    end 
-
-    # def find_todo : String
-    #   id = route_params["id"]
-    #   @todo = Todo.find!(id)
-    # end
   
     # lazy getter
     # default nilable until its returned
     # getter(todo) { Todo.find!(id) }
-    
-
   
   end
   
