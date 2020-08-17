@@ -15,42 +15,9 @@ class Todos < Application
     # property
   
     def index
-      puts "Index method running"
-      todos = Todo.query
-  
-      welcome_text = "To Do List"
-      Log.warn { "logs can be collated using the request ID" }
-  
-      # You can use signals to change log levels at runtime
-      # USR1 is debugging, USR2 is info
-      # `kill -s USR1 %APP_PID`
-      Log.debug { "use signals to change log levels at runtime" }
-  
-      respond_with do
-        html template("index.ecr")
-        text "Welcome, #{welcome_text}"
-        json({welcome: welcome_text})
-        xml do
-          XML.build(indent: "  ") do |xml|
-            xml.element("welcome") { xml.text welcome_text }
-          end
-        end
-      end
-    end
-  
-    # GET /todos/new
-    def new
-      welcome_text = "New To Do"
-      respond_with do
-        html template("new.ecr")
-        text "Welcome, #{welcome_text}"
-        json({welcome: welcome_text})
-        xml do
-          XML.build(indent: "  ") do |xml|
-            xml.element("welcome") { xml.text welcome_text }
-          end
-        end
-      end
+      todos = Todo.query.select.to_a
+
+      render json: todos
     end
   
     # POST /todos
