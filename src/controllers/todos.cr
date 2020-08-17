@@ -55,10 +55,9 @@ class Todos < Application
     # setter
     # property
   
+    # GET /todos
     def index
-      todos = Todo.query.select.to_a
-
-      render json: todos
+      render json: Todo.query.select.to_a
     end
   
     # POST /todos
@@ -68,6 +67,7 @@ class Todos < Application
   
     # GET /todos/:id
     def show
+
     end
   
     # GET /todos/:id/edit
