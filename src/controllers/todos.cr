@@ -3,8 +3,10 @@ require "xml"
 
 class Todos < Application
     base "/todos"
+
+    getter todo : Todo?
   
-    # before_action :find_todo
+    # before_action :current_todo, only: [:destroy]
   
     # @todo : Todo?
   
@@ -12,23 +14,9 @@ class Todos < Application
     # setter
     # property
   
-  
     def index
-      # @todos = ToDo.all
-      todo = "String from ToDo controller"
-      # @todos = ToDo.all
-      
-      # SELECT * FROM todos
-      # query = ToDo.query
-      # todos = Todo.query.each do |todo|
-      #   "number #{todo.id}: #{todo.todo}"
-      # end
-      # puts todos.todo
-      
-      # todos = ["first element"]
-      # todos = Todo.query.each do |todo|
-      #   "number #{todo.id}: #{todo.todo}"
-      # end
+      puts "Index method running"
+      todos = Todo.query
   
       welcome_text = "To Do List"
       Log.warn { "logs can be collated using the request ID" }
@@ -67,7 +55,11 @@ class Todos < Application
   
     # POST /todos
     def create
-  
+      t = Todo.new
+      t.todo = "hard coded todo"
+      t.completed = false
+      t.save!
+
     end
   
     # GET /todos/:id
@@ -100,15 +92,28 @@ class Todos < Application
   
     # DELETE /todos/:id
     def destroy
-      # query = Todo.query
-      # query.select("id")
-      # query.destroy
+      todo_id = route_params["id"]
+      current_todo = Todo.query.find!{ id == todo_id }
+      # current_todo.destroy
+      #puts current_todo
+
+      # puts current_todo
+      # current_todo.destroy
+      # head :accepted
+      
+      # puts todo_id
+      # todos = Todo.query
+      # todo = todos.find!(todo_id.to_i32)
+      
+      # todo.destroy
+      # query.select("id").destroy
+
       # Clear::SQL.delete(Todo.id).from("todos").execute
       # todo = current_todo
       # getter(todo, &find_todo)
       # todo = current_todo
       # todo.destroy
-      puts "destroy method ran!!!!"
+      # puts "destroy method ran!!!!"
     end
   
     # ============================================
@@ -116,13 +121,17 @@ class Todos < Application
     # ============================================
   
     
-    
-    
-  
     def find_todo
       Todo.find!(id)
     end
     
+    def current_todo
+      
+    #   todo_id = route_params["id"]
+    #   current_todo = Todo.query.where(id: todo_id)
+    #   current_todo
+    end 
+
     # def find_todo : String
     #   id = route_params["id"]
     #   @todo = Todo.find!(id)

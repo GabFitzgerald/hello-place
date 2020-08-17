@@ -6,9 +6,9 @@
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 <body style="text-align: center">
-    <h1><%= welcome_text %><h1>
+    <h1>To Do List<h1>
 
-    <% todos = Todo.query.each do |todo| %>
+    <% todos.each do |todo| %>
     
     <table style="width:100%">
         <tr>
@@ -17,7 +17,7 @@
                 <button id=<%="#{todo.id}"%> >Edit</button>
                 <button id=<%="#{todo.id}"%> >Delete (Fake)</button>
                 
-                <button method="destroy" >Delete</button>
+                <button action="DELETE" method="destroy" path="/todos/<%="#{todo.id}"%>" >Delete</button>
             </td>
         </tr>
     <% end %>
