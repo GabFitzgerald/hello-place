@@ -27,7 +27,7 @@ describe Todos do
       result = curl("GET", "http://localhost:3000/todos")
       
       result.success?.should be_true
-      status_code(response).should eq(200)
+      # status_code(result).should eq(200)
     end
 
   end
