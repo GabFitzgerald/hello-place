@@ -1,6 +1,5 @@
 require "option_parser"
 require "./constants"
-# require "todos.cr"
 
 # Server defaults
 port = App::DEFAULT_PORT
@@ -15,10 +14,6 @@ Clear::SQL.init(database,
 
 # Activate all the migrations. Will call change with up direction for each down migrations
 Clear::Migration::Manager.instance.apply_all
-
-# t = ToDo.new({completed: true, todo: "Make to do list" })
-# t.save!
-# puts "ToDo has been saved as id=#{t.id}"
 
 # Command line options
 OptionParser.parse(ARGV.dup) do |parser|
