@@ -17,11 +17,18 @@ describe Todos do
     todo2.save
   end
 
-  # Spec.after_each do
-  #   todo1.destroy
-  #   todo2.destroy
-  # end
+  Spec.after_each do
+    todo1.delete
+    todo2.delete
+  end
 
-  it "should return a list of todos" do
+  with_server do
+    it "should successfully request /todos" do
+      result = curl("GET", "http://localhost:3000/todos")
+      
+      result.success?.should be_true
+      status_code(response).should eq(200)
+    end
+
   end
 end
