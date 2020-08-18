@@ -45,7 +45,7 @@ class Todos < Application
 
   ###########################################################
 
-  getter(todo : Todo?) { find_todo }
+  getter todo : Todo { find_todo }
 
   # setter
   # property

@@ -1,4 +1,5 @@
 require "../spec_helper"
+# require "/src/controllers/todos.cr"
 
 describe Todos do
   todo1 = Todo.new
@@ -16,10 +17,10 @@ describe Todos do
     todo2.save
   end
 
-  Spec.after_each do
-    todo1.destroy
-    todo2.destroy
-  end
+  # Spec.after_each do
+  #   todo1.destroy
+  #   todo2.destroy
+  # end
 
   it "should return a list of todos" do
   end
