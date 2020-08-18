@@ -1,9 +1,9 @@
-require "action-controller"
-require "xml"
-
 class Todos < Application
     base "/todos"
     
+    ################################################
+    # CORS setup
+    ################################################
     # def todo_url(id)
     #   "#{TODOS_URI}/#{id}"
     # end
@@ -45,13 +45,7 @@ class Todos < Application
 
     ###########################################################
 
-    getter todo : Todo?
-  
-    # before_action :current_todo, only: [:destroy]
-  
-    # @todo : Todo?
-  
-    # getter
+    getter(todo : Todo?) { find_todo }  
     # setter
     # property
   
@@ -67,7 +61,6 @@ class Todos < Application
   
     # GET /todos/:id
     def show
-      todo = Todo.query.find!{id == route_params["id"]}
       render json: {todo}
     end
   
@@ -85,21 +78,15 @@ class Todos < Application
   
     # DELETE /todos/:id
     def destroy
-      Todo.query.find!{id == route_params["id"]}.delete
+      todo.delete
     end
   
     # ============================================
     #              Helper Methods
     # ============================================
-  
-    
+   
     def find_todo
-      Todo.query.find!({id: params["id"]})
+      Todo.find!(route_params["id"])
     end
-  
-    # lazy getter
-    # default nilable until its returned
-    # getter(todo) { Todo.find!(id) }
-  
   end
   
