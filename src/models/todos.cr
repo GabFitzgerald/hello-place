@@ -1,3 +1,5 @@
+require "clear"
+
 class Todo
   include Clear::Model
 

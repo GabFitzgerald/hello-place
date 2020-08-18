@@ -6,3 +6,4 @@ app
 *.dwarf
 bin
 node_modules
+welcome_spec.cr
