@@ -63,7 +63,7 @@ class Todos < Application
   # GET /todos
   def index
     render json: Todo.query.select.to_a
-    response.headers["Access-Control-Allow-Methods"] = "GET,HEAD,POST,DELETE,OPTIONS,PUT,PATCH"
+    # response.headers["Access-Control-Allow-Methods"] = "GET,HEAD,POST,DELETE,OPTIONS,PUT,PATCH"
   end
 
   # POST /todos

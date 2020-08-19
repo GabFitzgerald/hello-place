@@ -5,15 +5,17 @@ class Migration1
 
   def change(direction)
     direction.up do
-      execute("CREATE TABLE to_dos (
+      execute("CREATE TABLE public.to_dos (
                 id serial NOT NULL PRIMARY KEY,
+                title text,
                 completed bool,
-                todo text
+                order int,
+                url text,
             );")
     end
 
-    direction.down do
-      execute("DROP TABLE to_dos")
-    end
+    # direction.down do
+    #   execute("DROP TABLE todos")
+    # end
   end
 end

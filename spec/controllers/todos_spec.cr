@@ -7,13 +7,13 @@ describe Todos do
 
   Spec.before_each do
     todo1 = Todo.new
-    todo1.completed = false
     todo1.title = "Test todo 1"
+    todo1.completed = false
     todo1.save
 
     todo2 = Todo.new
-    todo2.completed = false
     todo2.title = "Test todo 2"
+    todo2.completed = false
     todo2.save
   end
 
