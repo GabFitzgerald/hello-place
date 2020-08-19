@@ -17,13 +17,25 @@ class Todos < Application
   #   }
   # end
 
-  # before_all "/todos" do |env|
+  # def before_all "/todos" do |env|
   #   # Support CORS and set responses to JSON as default.
   #   headers env, {
   #     "Access-Control-Allow-Origin"  => "*",
   #     "Content-Type"                 => "application/json",
   #     "Access-Control-Allow-Headers" => "Content-Type",
   #   }
+  # end
+
+  # before_action :before_all 
+
+  options "/", :option_task do
+    response.headers["Access-Control-Allow-Methods"] = "GET"
+  end
+
+  # ,HEAD,POST,DELETE,OPTIONS,PUT,PATCH
+
+  # options "/:id", :option_task_id do
+  #   response.headers["Access-Control-Allow-Methods"] = "GET,HEAD,POST,DELETE,OPTIONS,PUT,PATCH"
   # end
 
   # before_action :setup_cors
