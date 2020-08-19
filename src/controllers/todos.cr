@@ -28,9 +28,7 @@ class Todos < Application
 
   # before_action :before_all 
 
-  options "/", :option_task do
-    response.headers["Access-Control-Allow-Methods"] = "GET"
-  end
+  
 
   # ,HEAD,POST,DELETE,OPTIONS,PUT,PATCH
 
@@ -65,6 +63,7 @@ class Todos < Application
   # GET /todos
   def index
     render json: Todo.query.select.to_a
+    response.headers["Access-Control-Allow-Methods"] = "GET,HEAD,POST,DELETE,OPTIONS,PUT,PATCH"
   end
 
   # POST /todos
@@ -90,6 +89,18 @@ class Todos < Application
   # DELETE /todos/:id
   def destroy
     todo.delete
+  end
+
+  options "/", :option_todo do 
+    response.headers["Access-Control-Allow-Methods"] = "GET,HEAD,POST,DELETE,OPTIONS,PUT,PATCH"
+    # response.["Access-Control-Allow-Origin"]  = "*"
+    # response.["Content-Type"]                = "application/json"
+    # response.["Access-Control-Allow-Headers"] = "Content-Type"
+  
+  end
+
+  options "/:id", :option_todo_id do
+    response.headers["Access-Control-Allow-Methods"] = "GET,HEAD,POST,DELETE,OPTIONS,PUT,PATCH"
   end
 
   # ============================================
