@@ -14,6 +14,9 @@ dependencies:
     github: will/crystal-pg
   mysql:
     github: crystal-lang/crystal-mysql
+  cors:
+    github: prutya/cors
+    branch: master
 
   # Extends ENV to read values injected by docker and kubernetes secrets
   secrets-env:
