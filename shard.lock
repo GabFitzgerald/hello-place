@@ -20,6 +20,10 @@ shards:
     git: https://github.com/anykeyh/clear.git
     version: 0.8+git.commit.4120e5e9bdea4d1ea78c9c7c74b6deb65bfcebe2
 
+  cors:
+    git: https://github.com/prutya/cors.git
+    version: 0.2.3+git.commit.537bd02fb907f4032d847334c76ec5cfde0c814b
+
   db:
     git: https://github.com/crystal-lang/crystal-db.git
     version: 0.9.0

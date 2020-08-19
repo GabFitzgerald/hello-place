@@ -17,13 +17,23 @@ class Todos < Application
   #   }
   # end
 
-  # before_all "/todos" do |env|
+  # def before_all "/todos" do |env|
   #   # Support CORS and set responses to JSON as default.
   #   headers env, {
   #     "Access-Control-Allow-Origin"  => "*",
   #     "Content-Type"                 => "application/json",
   #     "Access-Control-Allow-Headers" => "Content-Type",
   #   }
+  # end
+
+  # before_action :before_all 
+
+  
+
+  # ,HEAD,POST,DELETE,OPTIONS,PUT,PATCH
+
+  # options "/:id", :option_task_id do
+  #   response.headers["Access-Control-Allow-Methods"] = "GET,HEAD,POST,DELETE,OPTIONS,PUT,PATCH"
   # end
 
   # before_action :setup_cors
@@ -53,6 +63,7 @@ class Todos < Application
   # GET /todos
   def index
     render json: Todo.query.select.to_a
+    response.headers["Access-Control-Allow-Methods"] = "GET,HEAD,POST,DELETE,OPTIONS,PUT,PATCH"
   end
 
   # POST /todos
@@ -78,6 +89,18 @@ class Todos < Application
   # DELETE /todos/:id
   def destroy
     todo.delete
+  end
+
+  options "/", :option_todo do 
+    response.headers["Access-Control-Allow-Methods"] = "GET,HEAD,POST,DELETE,OPTIONS,PUT,PATCH"
+    # response.["Access-Control-Allow-Origin"]  = "*"
+    # response.["Content-Type"]                = "application/json"
+    # response.["Access-Control-Allow-Headers"] = "Content-Type"
+  
+  end
+
+  options "/:id", :option_todo_id do
+    response.headers["Access-Control-Allow-Methods"] = "GET,HEAD,POST,DELETE,OPTIONS,PUT,PATCH"
   end
 
   # ============================================
