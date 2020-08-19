@@ -27,12 +27,7 @@ class Todos < Application
 
   # GET /todos/:id
   def show
-    render json: {todo}
-  end
-
-  get "todo/:id" do
-  
-  
+    render text: todo.to_json
   end
 
   # PATCH /todos/:id
