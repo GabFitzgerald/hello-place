@@ -79,7 +79,7 @@ class Todos < Application
     new_todo = Todo.new(JSON.parse(request.body.as(IO))).save!
     new_todo.url = "http://localhost:3000/todos/#{new_todo.id}"
     new_todo.save!
-    return new_todo
+    render text: new_todo.to_json  
     # render new_todo
     # render json: { todo }
     # render :created, text: todo.to_json
@@ -103,6 +103,7 @@ class Todos < Application
   # DELETE /todos/:id
   def destroy
     todo.delete
+    render text: todo.to_json 
   end
 
   options "/", :option_todo do 
