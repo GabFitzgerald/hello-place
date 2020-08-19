@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Todos Index</title>
+    <!-- <link rel="shortcut icon" href="favicon.ico"/> -->
+</head>
+<body style="text-align: center">
+
+    <form action="/todos/new" method="GET">
+        <input type="submit" value="CREATE NEW TODO">
+    </form>
+    <br/>
+
+    <table>
+        <tr>
+            <td>Title</td>
+            <td>Completed</td>
+            <td>Order</td>
+            <td>Url</td>
+
+        </tr> 
+       <% Todo.query.to_a.each do |todo| %>  
+       <tr>
+            <td><%= todo.title %></td>
+            <td><%= todo.completed %></td>
+            <td><%= todo.order %></td>
+            <td><%= todo.url %></td>
+            
+          
+        </tr> 
+        <% end %>
+    </table>
+    
+</body>
+</html>

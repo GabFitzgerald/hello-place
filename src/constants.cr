@@ -19,7 +19,7 @@ module App
   COOKIE_SESSION_KEY    = ENV["COOKIE_SESSION_KEY"]? || "_hello_place_"
   COOKIE_SESSION_SECRET = ENV["COOKIE_SESSION_SECRET"]? || "4f74c0b358d5bab4000dd3c75465dc2c"
 
-  PG_DATABASE_URL = ENV["PG_DATABASE_URL"]? || "postgres://gab@localhost/postgres"
+  PG_DATABASE_URL = ENV["PG_DATABASE_URL"]? || "postgres://gab@localhost/gab"
 
   def self.running_in_production?
     ENVIRONMENT == "production"
