@@ -9,4 +9,6 @@ class Todo
   column url : String?
 
   column id : Int32, primary: true, presence: false
+
+  self.table = "todos"
 end

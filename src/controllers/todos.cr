@@ -1,3 +1,5 @@
+require "../models/todos.cr"
+
 class Todos < Application
   base "/todos"
 
