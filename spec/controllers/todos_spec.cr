@@ -24,11 +24,31 @@ describe Todos do
 
   with_server do
     it "should successfully request /todos" do
-      result = curl("GET", "http://localhost:3000/todos")
+      result = curl("GET", "/todos")
       
       result.success?.should be_true
       # status_code(result).should eq(200)
     end
+
+    # it "should delete a todo" do
+    #   # instantiate the controller
+    #   context = context("DELETE", "/todos/#{todo1.id}/")
+    #   context.route_params = {"id" => todo1.id.not_nil!}
+    #   app = Todo.new(context)
+  
+    #   # Test the instance method of the controller
+    #   app.destroy
+  
+    #   # Check only one is returned
+    #   response = IO::Memory.new
+    #   app = Todo.new(context("GET", "/todos", response_io: response))
+  
+    #   # Test the instance method of the controller
+    #   app.index
+    #   response.to_s.split("\r\n").reject(&.empty?)[-1].should eq(
+    #     %([{"completed"=false,"todo"="Test todo 1"}])
+    #   )
+    # end
 
   end
 end
