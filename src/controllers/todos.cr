@@ -65,12 +65,24 @@ class Todos < Application
   # GET /todos
   def index
     render json: Todo.query.select.to_a
+    # respond_with do
+    #   html template("todos.ecr")
+    # end
     # response.headers["Access-Control-Allow-Methods"] = "GET,HEAD,POST,DELETE,OPTIONS,PUT,PATCH"
   end
 
+  # GET /todos/new
+
+
   # POST /todos
   def create
-    Todo.new(JSON.parse(request.body.as(IO))).save!
+    new_todo = Todo.new(JSON.parse(request.body.as(IO))).save!
+    new_todo.url = "http://localhost:3000/todos/#{new_todo.id}"
+    new_todo.save!
+    return new_todo
+    # render new_todo
+    # render json: { todo }
+    # render :created, text: todo.to_json
   end
 
   # GET /todos/:id

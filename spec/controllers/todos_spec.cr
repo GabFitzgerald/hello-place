@@ -23,11 +23,21 @@ describe Todos do
   end
 
   with_server do
+
     it "should successfully request /todos" do
       result = curl("GET", "/todos")
-      
       result.success?.should be_true
-      # status_code(result).should eq(200)
+      # result.should eq("")
+    end
+
+    it "should get a 200 status code" do
+      result = curl("GET", "/todos")
+      result.status_code.should eq(200)
+    end
+
+    it "should retrun json" do
+      result = curl("GET", "/todos")
+      JSON.parse(result.body).as_h["title"].should eq("todo.title")
     end
 
     # it "should delete a todo" do
