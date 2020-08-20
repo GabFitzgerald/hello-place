@@ -72,8 +72,6 @@ describe Todos do
     it "should delete all todos" do
       result = curl("DELETE", "/todos")
       result.status_code.should eq(200)
-      # todos = Array(String).from_json(result.body)
-      # todos.size.should eq(0)
     end
 
     it "should delete all todos" do
