@@ -65,7 +65,17 @@ describe Todos do
 
 
     # test DELETE /todos/:id
+    it "should delete a specific todo" do
+      result = curl("DELETE", "/todos/#{todo1.id}")
+      result.status_code.should eq(200)
+    end
 
+    it "should delete a specific todo" do
+      result1 = curl("DELETE", "/todos/#{todo1.id}")
+      result1.body.should eq("#{todo1.to_json}")
+      result2 = curl("DELETE", "/todos/#{todo2.id}")
+      result2.body.should eq("#{todo2.to_json}")
+    end
 
 
     # test DELETE /todos
@@ -76,8 +86,7 @@ describe Todos do
 
     it "should delete all todos" do
       result = curl("DELETE", "/todos")
-      todos = result.body
-      todos.should eq("{}")
+      result.body.should eq("{}")
     end
 
   end
