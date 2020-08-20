@@ -1,41 +1,32 @@
 require "../spec_helper"
 
 describe Todo do
-  it "should save and destroy bookings" do
-    booking = Booking.new
-    booking.user_id = "user-1234"
-    booking.user_email = "steve@bob.com"
-    booking.user_name = "hello world"
-    booking.asset_id = "asset-id"
-    booking.booking_type = "desk"
-    booking.title = "best desk"
-    booking.zones = ["zone-1234", "zone-4567", "zone-890"]
-    booking.booking_start = 5.minutes.from_now.to_unix
-    booking.booking_end = 40.minutes.from_now.to_unix
+  it "should save and destroy todos" do
+    todo = Todo.new
+    todo.title = "make a will"
+    todo.completed = false
+    todo.order = 100
 
     begin
-      booking.save!
+      todo.save!
     rescue e
-      puts booking.errors
+      puts todo.errors
       raise e
     end
 
-    results = [] of Booking
+    results = [] of Todo
 
-    # Let's find this booking
-    Booking.all(
-      "WHERE ? = ANY (zones) AND ? = ANY (zones)",
-      ["zone-4567", "zone-1234"]
-    ).each { |book| results << book }
+    Todo.query.select.to_a.each { |todo| results << todo }
 
-    results.map(&.id).includes?(booking.id).should eq(true)
+    results.map(&.id).includes?(todo.id).should eq(true)
 
-    booking.destroy
+    todo.delete
   end
 
-  it "should instantiate a booking using JSON" do
-    booking = Booking.from_json(%({"user_email":"bob@jane.com","extension_data":{"test":"data"}}))
-    booking.user_email.should eq("bob@jane.com")
-    booking.extension_data.to_json.should eq(%({"test":"data"}))
+  it "should instantiate a todo using JSON" do
+    # todo = Todo.from_json(%({"title":"make a will"}))
+    # todo.title.should eq("make a will")
+    # # booking.extension_data.to_json.should eq(%({"test":"data"}))
+    # todo.delete
   end
 end
