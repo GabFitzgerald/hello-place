@@ -4,18 +4,11 @@ class Todos < Application
   base "/todos"
 
   getter todo : Todo { find_todo }
-  # setter
-  # property
 
   # GET /todos
   def index
     render json: Todo.query.select.to_a
-    # respond_with do
-    #   html template("todos.ecr")
-    # end
   end
-
-  # GET /todos/new
 
   # POST /todos
   def create
@@ -51,11 +44,6 @@ class Todos < Application
 
     todo.save
     render text: todo.to_json
-  end
-
-  # PUT /todos/:id
-  # replace a specific todo
-  def replace
   end
 
   # DELETE /todos/:id
