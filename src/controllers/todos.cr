@@ -33,6 +33,24 @@ class Todos < Application
   # PATCH /todos/:id
   # update a specific todo
   def update
+    changes = JSON.parse(request.body.as(IO)).as_h
+  
+    changes.each do |key, value|  
+      begin 
+        case key
+        when "title"
+          todo.title = value.to_s
+        when "completed"
+          todo.completed = value.as_bool
+        when "order"
+          todo.order = value.as_i
+        end
+      rescue NilAssertionError
+      end
+    end
+
+    todo.save
+    render text: todo.to_json
   end
 
   # PUT /todos/:id
