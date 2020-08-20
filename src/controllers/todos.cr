@@ -52,18 +52,15 @@ class Todos < Application
     render text: todo.to_json 
   end
 
+  # DELETE /todos (for todobackend.com compliance)
   delete "/" do 
     Todo.query.select.each { |todo| todo.delete }
     render text: ({} of String => String).to_json
   end
 
-  options "/", :option_todo do 
-    response.headers["Access-Control-Allow-Methods"] = "GET,HEAD,POST,DELETE,OPTIONS,PUT,PATCH"  
-  end
+  options "/" { cors_access }
 
-  options "/:id", :option_todo_id do
-    response.headers["Access-Control-Allow-Methods"] = "GET,HEAD,POST,DELETE,OPTIONS,PUT,PATCH"
-  end
+  options "/:id" { cors_access }
 
   # ============================================
   #              Helper Methods
@@ -71,5 +68,9 @@ class Todos < Application
 
   def find_todo
     Todo.find!(route_params["id"])
+  end
+
+  def cors_access
+    response.headers["Access-Control-Allow-Methods"] = "GET,POST,DELETE,OPTIONS,PATCH"
   end
 end

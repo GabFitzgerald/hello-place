@@ -24,10 +24,11 @@ describe Todos do
 
   with_server do
 
+    # test GET /todos
+
     it "should successfully request /todos" do
       result = curl("GET", "/todos")
       result.success?.should be_true
-      # result.should eq("")
     end
 
     it "should get a 200 status code" do
@@ -37,8 +38,30 @@ describe Todos do
 
     it "should retrun json" do
       result = curl("GET", "/todos")
-      JSON.parse(result.body).as_h["title"].should eq("todo.title")
+      JSON.parse(result.body)["title"].should eq("todo.title")
     end
+
+    
+    # test POST /todos
+
+
+
+    # test PATCH /todos/:id
+
+
+
+    # test DELETE /todos/:id
+
+
+
+    # test DELETE /todos
+
+
+ 
+
+
+
+
 
     # it "should delete a todo" do
     #   # instantiate the controller
