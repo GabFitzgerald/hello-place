@@ -22,7 +22,6 @@ describe Todos do
   end
 
   with_server do
-
     # test GET /todos
 
     it "should successfully request /todos" do
@@ -40,50 +39,47 @@ describe Todos do
       result.body.should eq("[#{todo1.to_json},#{todo2.to_json}]")
     end
 
-    
     # test POST /todos
 
     it "should successfully post to /todos" do
-      body1 = {"title"=>"research graduate schools","completed"=>"false","order"=>"3"}
-      result = curl("POST", "/todos", body: body1.to_json )
+      body1 = {"title" => "research graduate schools", "completed" => "false", "order" => "3"}
+      result = curl("POST", "/todos", body: body1.to_json)
       result.success?.should be_true
       result.status_code.should eq(200)
 
-      body2 = {"title"=>"be spontaneous","completed"=>"true"}
-      result2 = curl("POST", "/todos", body: body2.to_json )
+      body2 = {"title" => "be spontaneous", "completed" => "true"}
+      result2 = curl("POST", "/todos", body: body2.to_json)
       result2.success?.should be_true
       result2.status_code.should eq(200)
     end
 
     it "should return correct json on POST /todos" do
-      body = {"title"=>"research graduate schools","completed"=>"false","order"=>"3"}
-      result = curl("POST", "/todos", body: body.to_json )
+      body = {"title" => "research graduate schools", "completed" => "false", "order" => "3"}
+      result = curl("POST", "/todos", body: body.to_json)
       result.body.includes?("research graduate schools").should eq(true)
       result.body.includes?("3").should eq(true)
 
-      body2 = {"title"=>"be spontaneous","completed"=>"true"}
-      result2 = curl("POST", "/todos", body: body2.to_json )
+      body2 = {"title" => "be spontaneous", "completed" => "true"}
+      result2 = curl("POST", "/todos", body: body2.to_json)
       result2.body.includes?("be spontaneous").should eq(true)
       result2.body.includes?("true").should eq(true)
     end
 
-
     # test PATCH /todos/:id
 
     it "should successfully send a PATCH request" do
-      body = {"title"=>"create lasting childhood memories"}
+      body = {"title" => "create lasting childhood memories"}
       result = curl("PATCH", "/todos/#{todo1.id}", body: body.to_json)
       result.success?.should be_true
       result.status_code.should eq(200)
     end
 
     it "should update a specific todo" do
-      body = {"title"=>"create lasting childhood memories"}
+      body = {"title" => "create lasting childhood memories"}
       result = curl("PATCH", "/todos/#{todo1.id}", body: body.to_json)
       result.body.includes?("create lasting childhood memories").should eq(true)
       result.body.includes?("false").should eq(true)
     end
-
 
     # test DELETE /todos/:id
 
@@ -99,7 +95,6 @@ describe Todos do
       result2.body.should eq("#{todo2.to_json}")
     end
 
-
     # test DELETE /todos
     it "should delete all todos" do
       result = curl("DELETE", "/todos")
@@ -110,6 +105,5 @@ describe Todos do
       result = curl("DELETE", "/todos")
       result.body.should eq("{}")
     end
-
   end
 end

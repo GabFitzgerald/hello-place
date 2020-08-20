@@ -56,8 +56,6 @@ end
 
 require "cors"
 
-
-
 # Load the routes
 puts "Launching #{App::NAME} v#{App::VERSION}"
 

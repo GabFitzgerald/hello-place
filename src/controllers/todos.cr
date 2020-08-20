@@ -27,9 +27,9 @@ class Todos < Application
   # update a specific todo
   def update
     changes = JSON.parse(request.body.as(IO)).as_h
-  
-    changes.each do |key, value|  
-      begin 
+
+    changes.each do |key, value|
+      begin
         case key
         when "title"
           todo.title = value.to_s
@@ -53,7 +53,7 @@ class Todos < Application
   end
 
   # DELETE /todos (for todobackend.com compliance)
-  delete "/" do 
+  delete "/" do
     Todo.query.select.each { |todo| todo.delete }
     output({} of String => String)
   end

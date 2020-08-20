@@ -8,7 +8,7 @@ class Migration1
       execute("CREATE TABLE todos (
                 id serial NOT NULL PRIMARY KEY,
                 title text,
-                completed bool DEFAULT false, 
+                completed bool DEFAULT false,
                 \"order\" int,
                 url text
             );")
