@@ -5,8 +5,8 @@ services:
 
 install:
   - docker pull gabfitzgerald/hello-place
-  - docker run -d gabfitzgerald/hello-place
-  - docker run -p 5432:8000 -e POSTGRES_PASSWORD=postgres postgres
+  - docker run -d -p 2222:22 gabfitzgerald/hello-place
+  - docker run -p 5432:5432 -e POSTGRES_PASSWORD=postgres postgres
   - shards install
 
 script:
