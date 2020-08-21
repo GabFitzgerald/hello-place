@@ -4,7 +4,7 @@ service:
   - docker
 
 install:
-  - docker run --net=host -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
+  - docker run --net="host" -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
   - shards install
   
  
