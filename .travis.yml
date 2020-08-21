@@ -4,7 +4,7 @@ service:
   - docker
 
 install:
-  # - docker run --net="host" -p 5432:5432 -e POSTGRES_USER=gab -e POSTGRES_PASSWORD=postgres -d postgres
+  - docker run --net="host" -p 5432:5432 -e POSTGRES_USER=gab -e POSTGRES_PASSWORD=postgres -d postgres
   - shards install
   
  
@@ -12,4 +12,4 @@ install:
 script:
   - crystal spec
   - bin/ameba
-  - ENV_VAR=test docker-compose up --build --exit-code-from web
+  # - ENV_VAR=test docker-compose up --build --exit-code-from web
