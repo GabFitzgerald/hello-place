@@ -13,6 +13,7 @@ class Todos < Application
   # POST /todos
   def create
     new_todo = Todo.new(JSON.parse(request.body.as(IO))).save!
+    # fix for production/dev environment
     new_todo.url = "http://localhost:3000/todos/#{new_todo.id}"
     new_todo.save!
     output(new_todo)
