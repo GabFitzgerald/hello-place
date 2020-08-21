@@ -1,13 +1,13 @@
 language: crystal
+
 services:
-  - docker
-  env:
-    global:
-    - PGPORT=5433  
+  - docker 
+
 install:
+  - docker pull gabfitzgerald/latest
+  - docker run -d -p 2222:22 -e ROOT_PASS="PASSWORD" gabfitzgerald/latest
   - shards install
-before_script:
-  - cp config/database.yml.travis config/database.yml
+
 script:
   - crystal spec
   - bin/ameba
