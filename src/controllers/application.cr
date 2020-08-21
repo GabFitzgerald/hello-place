@@ -1,4 +1,6 @@
 require "uuid"
+require "action-controller"
+require "action-controller/server"
 
 abstract class Application < ActionController::Base
   # Configure your log source name
