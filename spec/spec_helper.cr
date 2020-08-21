@@ -22,11 +22,11 @@ require "../src/models/*"
 require "../src/controllers/*"
 
 
-SimpleRetry.try_to(max_attempts: 10, retry_on: DB::ConnectionRefused) do
-  # Connect to PG
-    Clear::SQL.init(App::PG_DATABASE_URL,
-        connection_pool_size: 5)
-end
+# SimpleRetry.try_to(max_attempts: 10, retry_on: DB::ConnectionRefused) do
+#   # Connect to PG
+#     Clear::SQL.init(App::PG_DATABASE_URL,
+#         connection_pool_size: 5)
+# end
 
-# Run the Migration
-Clear::Migration::Manager.instance.apply_all
+# # Run the Migration
+# Clear::Migration::Manager.instance.apply_all
