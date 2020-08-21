@@ -1,10 +1,17 @@
 require "option_parser"
 require "./constants"
+require "option_parser"
 
 # Server defaults
 port = App::DEFAULT_PORT
 host = App::DEFAULT_HOST
 process_count = App::DEFAULT_PROCESS_COUNT
+
+OptionParser.parse! do |opts|
+  opts.on("-p PORT", "--port PORT", "define port to run server") do |opt|
+    port = opt.to_i
+  end
+end
 
 # initialize a pool of database connection:
 require "clear"
