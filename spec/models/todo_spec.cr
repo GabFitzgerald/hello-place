@@ -16,7 +16,7 @@ describe Todo do
 
     results = [] of Todo
 
-    Todo.query.select.to_a.each { |todo| results << todo }
+    Todo.query.select.to_a.each { |i| results << i }
 
     results.map(&.id).includes?(todo.id).should eq(true)
 

@@ -1,9 +1,13 @@
 language: crystal
 services:
   - docker
+  env:
+    global:
+    - PGPORT=5433  
 install:
   - shards install
+before_script:
+  - cp config/database.yml.travis config/database.yml
 script:
   - crystal spec
   - bin/ameba
-  - ENV_VAR=test docker-compose up --build --exit-code-from web
