@@ -1,8 +1,7 @@
 language: crystal
 
 install:
-  - docker run --net=host -p 5432:8080 -e POSTGRES_PASSWORD=postgres -d postgres
-  - sleep 5
+  - docker run --net=host -p 5432:8000 -e POSTGRES_PASSWORD=postgres -d postgres
   - shards install
   
  
