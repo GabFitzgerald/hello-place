@@ -7,6 +7,9 @@ require "spec"
 # Helper methods for testing controllers (curl, with_server, context)
 require "../lib/action-controller/spec/curl_context"
 
+require "../src/models/*"
+require "../src/controllers/*" 
+
 # Dependent libs
 require "clear"
 # require "simple_retry"
@@ -17,6 +20,7 @@ require "action-controller/server"
 # Set up testing env
 require "../src/db/migrations/*"
 require "../src/constants.cr"
+
 
 Clear::SQL.init(App::PG_DATABASE_URL,
     connection_pool_size: 5)
