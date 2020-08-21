@@ -9,7 +9,7 @@ require "../lib/action-controller/spec/curl_context"
 
 # Dependent libs
 require "clear"
-require "simple_retry"
+# require "simple_retry"
 
 require "action-controller"
 require "action-controller/server"
