@@ -1,7 +1,7 @@
 language: crystal
 
 install:
-  - docker run -p 5432:5432 --net=host -e POSTGRES_PASSWORD=postgres postgres
+  - docker run -p 5432:5432 --net=host POSTGRES_PASSWORD=postgres postgres
   - pg_ctl -D /var/lib/postgresql/data -l logfile start
   - shards install
 
