@@ -1,13 +1,28 @@
-version: '3'
+version: '3.7'
+
 services:
   db:
-    
-
-  web:
-    build: .
+    image: postgres
+    environment:
+      POSTGRES_USER: gab
+      POSTGRES_PASSWORD: posgres
+      POSTGRES_DB: todo
+    volumes:
+      - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+      - ./data:/var/lib/postgresql/data
     ports:
-      - "5000:5000"
-  redis:
-    image: "redis:alpine"
+      - '5432:5432'
+  web:
+    image: crystallang/crystal
+    restart: always
+    environment:
+      POSTGRES_URI: postgres://gab@localhost/gab
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    ports:
+      - 4000:8080
 
     
