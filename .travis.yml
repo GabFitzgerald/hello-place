@@ -4,8 +4,8 @@ services:
   - docker 
 
 install:
-  - docker pull gabfitzgerald/latest
-  - docker run -d -p 2222:22 -e ROOT_PASS="PASSWORD" gabfitzgerald/latest
+  - docker pull gabfitzgerald/hello-place
+  - docker run -d -p 2222:22 -e ROOT_PASS="PASSWORD" gabfitzgerald/hello-place
   - shards install
 
 script:
