@@ -20,7 +20,6 @@ module App
   COOKIE_SESSION_SECRET = ENV["COOKIE_SESSION_SECRET"]? || "4f74c0b358d5bab4000dd3c75465dc2c"
 
   PG_DATABASE_URL = ENV["PG_DATABASE_URL"]? || "postgres://gab@localhost/gab"
-  POSTGRES_URI_TEST = ENV["POSTGRES_URI"]? || "postgresql://postgres:password@localhost:5432/todo_test"
 
   def self.running_in_production?
     ENVIRONMENT == "production"
