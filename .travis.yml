@@ -7,6 +7,7 @@ install:
   - docker pull gabfitzgerald/hello-place
   - docker run -d -p 2222:22 -e ROOT_PASS="PASSWORD" gabfitzgerald/hello-place
   - docker run -p 5432:8000 -e POSTGRES_PASSWORD=postgres postgres
+  - pg_ctl -D /var/lib/postgresql/data -l logfile start
   - shards install
 
 script:
