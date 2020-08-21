@@ -17,6 +17,8 @@ dependencies:
   cors:
     github: prutya/cors
     branch: master
+  simple_retry:
+    github: spider-gazelle/simple_retry
 
   # Extends ENV to read values injected by docker and kubernetes secrets
   secrets-env:
